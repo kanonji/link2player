@@ -1,30 +1,47 @@
 /* vim: set ts=2 sw=2 sts=2 et ff=unix ft=javascript : */
 jQuery(function(){
   var $ = jQuery;
-  var swfPath = '//3.2.1/wp-content/plugins/sample/asset/lib/jquery.jplayer.2.1.0/';
+  var swfPath = sample.swfPath;;
   var $content = $('.entry-content');
-  $('a[href$=mp3], a[href$=m4a]').each(function( index ){
-    var $source = $(this);
-    var $target = $('<div>').addClass('palyer');
-    $target.insertAfter( $source )
-    $target.after( writeJplayerInterface(index) );
-    //$target.after( writeJplayerInterfaceVideo(index) );
-    $target.jPlayer({
-      ready: function(event){
-        $(this).jPlayer( 'setMedia', {
-          mp3: $source.attr('href')
-        });
-        $source.remove();
-      },
-      swfPath: swfPath,
-      cssSelectorAncestor: "#jp_container_"+index,
-      //supplied: "mp3",
-      //warningAlerts: true.
-      errorAlerts: true,
+  var extensions = {};
+  $.each(sample.extensions.audio, function(){
+    extensions[this] = true;
+  });
+  $.each(sample.extensions.video, function(){
+    extensions[this] = false;
+  });
+  $.each(extensions, function(ext, isAudio){
+    $('a[href$='+ext+']').each(function( index ){
+      var $source = $(this);
+      var $target = $('<div>').addClass('palyer');
+      var id = [ext, index].join('_');
+      var media = {};
+      var supplied;
+      media[ext] = $source.attr('href');
+      $target.insertAfter( $source )
+      if ( isAudio ) {
+        $target.after( writeJplayerInterfaceAudio(id) );
+        supplied = sample.extensions.audio.join(',');
+      } else {
+        $target.after( writeJplayerInterfaceVideo(id) );
+        supplied = sample.extensions.video.join(',');
+      }
+      $target.jPlayer({
+        ready: function(event){
+          $(this).jPlayer( 'setMedia', media);
+          $source.remove();
+        },
+        swfPath: swfPath,
+        cssSelectorAncestor: "#jp_container_"+id,
+        supplied: supplied,
+        //solution: 'flash, html',
+        //warningAlerts: true.
+        errorAlerts: true,
+      });
     });
   });
 
-  function writeJplayerInterface(id){
+  function writeJplayerInterfaceAudio(id){
     var $container = $('<div id="jp_container_'+id+'" class="jp-audio"><div class="jp-type-single"></div></div>');
     var $typeSingle = $($container.find('div.jp-type-single'));
     var $interface = $('<div class="jp-gui jp-interface"></div>').appendTo($typeSingle);
