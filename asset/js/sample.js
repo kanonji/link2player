@@ -13,20 +13,23 @@ jQuery(function(){
   $.each(extensions, function(ext, isAudio){
     $('a[href$='+ext+']').each(function( index ){
       var $source = $(this);
-      var $target = $('<div>').addClass('palyer');
+      var $interface, $player;
       var id = [ext, index].join('_');
       var media = {};
       var supplied;
       media[ext] = $source.attr('href');
-      $target.insertAfter( $source )
       if ( isAudio ) {
-        $target.after( writeJplayerInterfaceAudio(id) );
+        $interface = writeJplayerInterfaceAudio(id);
+        $player = $interface.prev('div.jp-player');
+        $source.after( $player );
         supplied = sample.extensions.audio.join(',');
       } else {
-        $target.after( writeJplayerInterfaceVideo(id) );
+        $interface = writeJplayerInterfaceVideo(id);
+        $player = $interface.find('div.jp-player');
         supplied = sample.extensions.video.join(',');
       }
-      $target.jPlayer({
+      $source.after( $interface );
+      $player.jPlayer({
         ready: function(event){
           $(this).jPlayer( 'setMedia', media);
           $source.remove();
@@ -43,6 +46,7 @@ jQuery(function(){
 
   function writeJplayerInterfaceAudio(id){
     var $container = $('<div id="jp_container_'+id+'" class="jp-audio"><div class="jp-type-single"></div></div>');
+    var $player = $('<div class="jp-player"></div>').insertBefore($container);
     var $typeSingle = $($container.find('div.jp-type-single'));
     var $interface = $('<div class="jp-gui jp-interface"></div>').appendTo($typeSingle);
     var $controls = $('<ul class="jp-controls"></ul>').appendTo($interface);
@@ -68,6 +72,7 @@ jQuery(function(){
   function writeJplayerInterfaceVideo(id){
     var $container = $('<div id="jp_container_'+id+'" class="jp-video"><div class="jp-type-single"></div></div>');
     var $typeSingle = $($container.find('div.jp-type-single'));
+    var $player = $('<div class="jp-player"></div>').appendTo($typeSingle);
     var $gui = $('<div class="jp-gui"></div>').appendTo($typeSingle);
     var $noSolution = $('<div class="jp-no-solution">foo</div>').appendTo($typeSingle);
     var $videoPlay = $('<div class="jp-video-play"><a href="#" class="jp-video-play-icon" tabindex="1" title="play">play</a></div>').appendTo($gui);

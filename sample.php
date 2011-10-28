@@ -19,7 +19,7 @@ sample.extensions.video = %s;
 </script>',
     plugins_url( 'asset/lib/jquery.jplayer.2.1.0/', __FILE__ ),
     json_encode(array('mp3', 'm4a', 'ogg', 'oga')),
-    json_encode(array('flv', 'm4v', 'ogv'))
+    json_encode(array('flv', 'm4v', 'mp4', 'ogv'))
     );
 }
 
