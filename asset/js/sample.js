@@ -4,6 +4,11 @@ jQuery(function(){
   var swfPath = sample.swfPath;;
   var $content = $('.entry-content');
   var extensions = {};
+  var mediaKey = {};
+  var mediaKeyAlt = {
+      mp4: ['m4a', 'm4v'],
+      ogg: ['oga', 'ogv']
+  };
   $.each(sample.extensions.audio, function(){
     extensions[this] = true;
   });
@@ -17,6 +22,9 @@ jQuery(function(){
       var id = [ext, index].join('_');
       var media = {};
       var supplied;
+      if ( mediaKeyAlt[ext] ) {
+          ext = isAudio ? mediaKeyAlt[ext][0] : mediaKeyAlt[ext][1];
+      }
       media[ext] = $source.attr('href');
       if ( isAudio ) {
         $interface = writeJplayerInterfaceAudio(id);
@@ -80,7 +88,6 @@ jQuery(function(){
     var $progress = $('<div class="jp-progress"><div class="jp-seek-bar"><div class="jp-play-bar"></div></div></div>').appendTo($interface);
     var $currentTime = $('<div class="jp-current-time"></div>').appendTo($interface);
     var $duration = $('<div class="jp-duration"></div>').appendTo($interface);
-    var $title = $('<div class="jp-title"><ul><li></li></ul></div>').appendTo($interface);
     var $controlsHolder = $('<div class="jp-controls-holder"></div>').appendTo($interface);
     var $controls = $('<ul class="jp-controls"></ul>').appendTo($controlsHolder);
     var $play = $('<li><a href="#" class="jp-play" tabindex="1" title="play">play</a></li>').appendTo($controls);
@@ -95,6 +102,7 @@ jQuery(function(){
     var $restoreScreen = $('<li><a href="#" class="jp-restore-screen" tabindex="1" title="restore screen">restore screen</a></li>').appendTo($toggles);
     var $repeat = $('<li><a href="#" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>').appendTo($toggles);
     var $repeatOff = $('<li><a href="#" class="jp-repeat-off" tabindex="1" title="repeat off">repeat </a></li>').appendTo($toggles);
+    var $title = $('<div class="jp-title"><ul><li></li></ul></div>').appendTo($interface);
     return $container;
   }
 });
