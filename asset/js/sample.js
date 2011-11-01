@@ -7,7 +7,8 @@ jQuery(function(){
   var mediaKey = {};
   var mediaKeyAlt = {
       mp4: ['m4a', 'm4v'],
-      ogg: ['oga', 'ogv']
+      ogg: ['oga', 'ogv'],
+      webm: ['webma', 'webmv']
   };
   $.each(sample.extensions.audio, function(){
     extensions[this] = true;
