@@ -1,21 +1,20 @@
 <?php
-// vim: set ts=4 sw=4 sts=4 et ff=unix ft=php :
 /*
-Plugin Name: Sample
+Plugin Name: Link2Player
 Version: 0.1
 */
 
-define('SAMPLE_VERSION', '0.1');
+define('LINK2PLAYER_VERSION', '0.1');
 
-function sample_head(){
+function link2player_head(){
     echo sprintf( '<link rel="stylesheet" href="%s?var=%s">%s', plugins_url( 'asset/lib/jquery.jplayer.2.1.0/blue.monday/jplayer.blue.monday.css', __FILE__  ), '2.1.0', PHP_EOL);
     echo sprintf(
 '<script>
-var sample = {};
-sample.swfPath = "%s";
-sample.extensions = {};
-sample.extensions.audio = %s;
-sample.extensions.video = %s;
+var link2player = {};
+link2player.swfPath = "%s";
+link2player.extensions = {};
+link2player.extensions.audio = %s;
+link2player.extensions.video = %s;
 </script>',
     plugins_url( 'asset/lib/jquery.jplayer.2.1.0/', __FILE__ ),
     json_encode(array('fla', 'm4a', 'oga', 'webma', 'ogg', 'mp3', 'wav')),
@@ -26,7 +25,8 @@ sample.extensions.video = %s;
 // add javascript libraries
 wp_enqueue_script('jquery');
 wp_enqueue_script('jplayer', plugins_url('asset/lib/jquery.jplayer.2.1.0/jquery.jplayer.min.js', __FILE__), 'jquery', '2.1.0', true);
-wp_enqueue_script('sample', plugins_url('asset/js/sample.js', __FILE__), 'jquery', '0.1', true);
+wp_enqueue_script('link2player', plugins_url('asset/js/link2player.js', __FILE__), 'jquery', '0.1', true);
 
 // add filters and actions
-add_action( 'wp_head', 'sample_head' );
+add_action( 'wp_head', 'link2player_head' );
+// vim: set ts=4 sw=4 sts=4 et ff=unix ft=php :

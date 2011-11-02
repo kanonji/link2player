@@ -1,7 +1,7 @@
 /* vim: set ts=2 sw=2 sts=2 et ff=unix ft=javascript : */
 jQuery(function(){
   var $ = jQuery;
-  var swfPath = sample.swfPath;;
+  var swfPath = link2player.swfPath;;
   var $content = $('.entry-content');
   var extensions = {};
   var mediaKey = {};
@@ -10,10 +10,10 @@ jQuery(function(){
       ogg: ['oga', 'ogv'],
       webm: ['webma', 'webmv']
   };
-  $.each(sample.extensions.audio, function(){
+  $.each(link2player.extensions.audio, function(){
     extensions[this] = true;
   });
-  $.each(sample.extensions.video, function(){
+  $.each(link2player.extensions.video, function(){
     extensions[this] = false;
   });
   $.each(extensions, function(ext, isAudio){
@@ -31,11 +31,11 @@ jQuery(function(){
         $interface = writeJplayerInterfaceAudio(id);
         $player = $interface.prev('div.jp-player');
         $source.after( $player );
-        supplied = sample.extensions.audio.join(',');
+        supplied = link2player.extensions.audio.join(',');
       } else {
         $interface = writeJplayerInterfaceVideo(id);
         $player = $interface.find('div.jp-player');
-        supplied = sample.extensions.video.join(',');
+        supplied = link2player.extensions.video.join(',');
       }
       $source.after( $interface );
       $player.jPlayer({
