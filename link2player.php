@@ -2,6 +2,14 @@
 /*
 Plugin Name: Link2Player
 Version: 0.1
+Description: Replace audio/video link with jPlayer( http://jplayer.org/ ). Most are written in JavaScript with jQuery such as selecting elements to replace.
+Author: kanonji
+*/
+/*
+MIT license
+http://www.opensource.org/licenses/mit-license.php
+
+Licenses for libraries in asset/lib directory belong to their own licenses.
 */
 
 define('LINK2PLAYER_VERSION', '0.1');
