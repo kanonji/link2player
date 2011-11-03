@@ -29,12 +29,12 @@ jQuery(function(){
       media[ext] = $source.attr('href');
       if ( isAudio ) {
         $interface = writeJplayerInterfaceAudio(id);
-        $player = $interface.prev('div.jp-player');
+        $player = $interface.prev('div.jp-jplayer');
         $source.after( $player );
         supplied = link2player.extensions.audio.join(',');
       } else {
         $interface = writeJplayerInterfaceVideo(id);
-        $player = $interface.find('div.jp-player');
+        $player = $interface.find('div.jp-jplayer');
         supplied = link2player.extensions.video.join(',');
       }
       title = $source.attr('title') ? $source.attr('title') : $source.text();
@@ -61,7 +61,7 @@ jQuery(function(){
 
   function writeJplayerInterfaceAudio(id){
     var $container = $('<div id="jp_container_'+id+'" class="jp-audio"><div class="jp-type-single"></div></div>');
-    var $player = $('<div class="jp-player"></div>').insertBefore($container);
+    var $player = $('<div class="jp-jplayer"></div>').insertBefore($container);
     var $typeSingle = $($container.find('div.jp-type-single'));
     var $interface = $('<div class="jp-gui jp-interface"></div>').appendTo($typeSingle);
     var $controls = $('<ul class="jp-controls"></ul>').appendTo($interface);
@@ -87,7 +87,7 @@ jQuery(function(){
   function writeJplayerInterfaceVideo(id){
     var $container = $('<div id="jp_container_'+id+'" class="jp-video"><div class="jp-type-single"></div></div>');
     var $typeSingle = $($container.find('div.jp-type-single'));
-    var $player = $('<div class="jp-player"></div>').appendTo($typeSingle);
+    var $player = $('<div class="jp-jplayer"></div>').appendTo($typeSingle);
     var $gui = $('<div class="jp-gui"></div>').appendTo($typeSingle);
     var $noSolution = $('<div class="jp-no-solution">To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.</div>').appendTo($typeSingle);
     var $videoPlay = $('<div class="jp-video-play"><a href="#" class="jp-video-play-icon" tabindex="1" title="play">play</a></div>').appendTo($gui);
