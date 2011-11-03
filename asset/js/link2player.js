@@ -37,6 +37,11 @@ jQuery(function(){
         $player = $interface.find('div.jp-player');
         supplied = link2player.extensions.video.join(',');
       }
+      if ( $source.attr('title') ) {
+        $interface.find('div.jp-title ul li').text($source.attr('title'));
+      } else {
+        $interface.find('div.jp-title').remove();
+      }
       $source.after( $interface );
       $player.jPlayer({
         ready: function(event){
