@@ -80,7 +80,7 @@ jQuery(function(){
     var $repeat = $('<li><a href="#" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>').appendTo($toggles);
     var $repeatOff = $('<li><a href="#" class="jp-repeat-off" tabindex="1" title="repeat off">repeat </a></li>').appendTo($toggles);
     var $title = $('<div class="jp-title"><ul><li></li></ul></div>').appendTo($typeSingle);
-    var $noSolution = $('<div class="jp-no-solution">foo</div>').appendTo($typeSingle);
+    var $noSolution = $('<div class="jp-no-solution">To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.</div>').appendTo($typeSingle);
     return $container;
   }
 
@@ -89,7 +89,7 @@ jQuery(function(){
     var $typeSingle = $($container.find('div.jp-type-single'));
     var $player = $('<div class="jp-player"></div>').appendTo($typeSingle);
     var $gui = $('<div class="jp-gui"></div>').appendTo($typeSingle);
-    var $noSolution = $('<div class="jp-no-solution">foo</div>').appendTo($typeSingle);
+    var $noSolution = $('<div class="jp-no-solution">To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.</div>').appendTo($typeSingle);
     var $videoPlay = $('<div class="jp-video-play"><a href="#" class="jp-video-play-icon" tabindex="1" title="play">play</a></div>').appendTo($gui);
     var $interface = $('<div class="jp-interface"></div>').appendTo($gui);
     var $progress = $('<div class="jp-progress"><div class="jp-seek-bar"><div class="jp-play-bar"></div></div></div>').appendTo($interface);
