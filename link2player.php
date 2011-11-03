@@ -15,7 +15,8 @@ Licenses for libraries in asset/lib directory belong to their own licenses.
 define('LINK2PLAYER_VERSION', '0.1');
 
 function link2player_head(){
-    echo sprintf( '<link rel="stylesheet" href="%s?var=%s">%s', plugins_url( 'asset/lib/jquery.jplayer.2.1.0/blue.monday/jplayer.blue.monday.css', __FILE__  ), '2.1.0', PHP_EOL);
+    echo sprintf( '<link rel="stylesheet" href="%s?ver=%s">%s', plugins_url( 'asset/style/link2player.css', __FILE__  ), LINK2PLAYER_VERSION, PHP_EOL);
+    echo sprintf( '<link rel="stylesheet" href="%s?ver=%s">%s', plugins_url( 'asset/lib/jquery.jplayer.2.1.0/blue.monday/jplayer.blue.monday.css', __FILE__  ), '2.1.0', PHP_EOL);
     echo sprintf(
 '<script>
 var link2player = {};

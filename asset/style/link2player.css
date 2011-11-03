@@ -1,1 +1,4 @@
 /* vim: set ts=2 sw=2 sts=2 et ff=unix ft=css : */
+.jp-gui li {
+  padding: 0;
+}
