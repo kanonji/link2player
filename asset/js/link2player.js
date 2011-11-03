@@ -22,7 +22,7 @@ jQuery(function(){
       var $interface, $player;
       var id = [ext, index].join('_');
       var media = {};
-      var supplied;
+      var supplied, title;
       if ( mediaKeyAlt[ext] ) {
           ext = isAudio ? mediaKeyAlt[ext][0] : mediaKeyAlt[ext][1];
       }
@@ -37,8 +37,9 @@ jQuery(function(){
         $player = $interface.find('div.jp-player');
         supplied = link2player.extensions.video.join(',');
       }
-      if ( $source.attr('title') ) {
-        $interface.find('div.jp-title ul li').text($source.attr('title'));
+      title = $source.attr('title') ? $source.attr('title') : $source.text();
+      if ( title ) {
+        $interface.find('div.jp-title ul li').text( title );
       } else {
         $interface.find('div.jp-title').remove();
       }
