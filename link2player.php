@@ -1,9 +1,11 @@
 <?php
 /*
 Plugin Name: Link2Player
+Plugin URI: https://github.com/kanonji/link2player
 Version: 0.1
 Description: Replace audio/video link with jPlayer( http://jplayer.org/ ). Most are written in JavaScript with jQuery such as selecting elements to replace.
 Author: kanonji
+Author URI: http://twitter.com/kanonji
 */
 /*
 MIT license
