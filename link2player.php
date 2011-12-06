@@ -34,10 +34,12 @@ link2player.extensions.video = %s;
     );
 }
 
-// add javascript libraries
-wp_enqueue_script('jquery');
-wp_enqueue_script('jplayer', LINK2PLAYER_URL.'/asset/lib/jquery.jplayer.2.1.0/jquery.jplayer.min.js', 'jquery', '2.1.0', true);
-wp_enqueue_script('link2player', LINK2PLAYER_URL.'/asset/js/link2player.js', 'jquery', '0.1', true);
+if (! is_admin()) {
+    // add javascript libraries
+    wp_enqueue_script('jquery');
+    wp_enqueue_script('jplayer', LINK2PLAYER_URL.'/asset/lib/jquery.jplayer.2.1.0/jquery.jplayer.min.js', 'jquery', '2.1.0', true);
+    wp_enqueue_script('link2player', LINK2PLAYER_URL.'/asset/js/link2player.js', 'jquery', '0.1', true);
+}
 
 // add filters and actions
 add_action( 'wp_head', 'link2player_head' );
