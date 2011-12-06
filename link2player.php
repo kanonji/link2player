@@ -2,7 +2,7 @@
 /*
 Plugin Name: Link2Player
 Plugin URI: https://github.com/kanonji/link2player
-Version: 0.1
+Version: 0.2
 Description: Replace audio/video link with jPlayer( http://jplayer.org/ ). Most are written in JavaScript with jQuery such as selecting elements to replace.
 Author: kanonji
 Author URI: http://twitter.com/kanonji
@@ -14,7 +14,7 @@ http://www.opensource.org/licenses/mit-license.php
 Licenses for libraries in asset/lib directory belong to their own licenses.
 */
 
-define('LINK2PLAYER_VERSION', '0.1');
+define('LINK2PLAYER_VERSION', '0.2');
 define('LINK2PLAYER_URL', plugin_dir_url(null).basename(dirname(__FILE__)));
 
 function link2player_head(){
